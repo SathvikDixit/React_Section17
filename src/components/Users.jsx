@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import { UserContext } from "../App";
+import { UserContextData } from "../utils/UserContext";
 
 const Users = () => {
   const { id } = useParams();
-  let { users } = useContext(UserContext);
+  let { users } = useContext(UserContextData);
   let user = users.find((user) => user.id === +id);
   console.log(user);
 

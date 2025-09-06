@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { UserContext } from "../App";
+import { UserContextData } from "../utils/UserContext";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  let { users } = useContext(UserContext);
+  let { users } = useContext(UserContextData);
 
   return users ? (
     <ul>
