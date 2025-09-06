@@ -18,7 +18,7 @@ const Users = () => {
       <p>Company name: {user.company.name}</p>
       <br />
       <hr /><br />
-      <Link to='/' className="text-blue-600 text-white mx-3 my-1 rounded-md">Back</Link>
+      <Link to='/' className="text-blue-600 mx-3 my-1 rounded-md">Back</Link>
 
     </div>
   ) : (
