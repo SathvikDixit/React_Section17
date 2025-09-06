@@ -1,18 +1,41 @@
-import React from "react";
+import React, { createContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Users from "./components/Users";
+import axios from "axios";
+import { useState } from "react";
+
+export const UserContext = createContext(null);
 
 const App = () => {
-  const [first, setfirst] = useState(second)
+  const [users, setusers] = useState(null);
+
+  const getUsers = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      console.log(data);
+      setusers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
-    <div className="w-[80%] bg-zinc-200 mt-5 mx-auto p-5">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/users/:id" element={<Users />} />
-      </Routes>
-      Home
-    </div>
+    <UserContext.Provider value={{ users, setusers }}>
+      <div className="w-[80%] bg-zinc-200 mt-5 mx-auto p-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users/:id" element={<Users />} />
+        </Routes>
+        {/* Home */}
+      </div>
+    </UserContext.Provider>
   );
 };
 
