@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ users, setusers }}>
-      <div className="w-[80%] bg-zinc-200 mt-5 mx-auto p-5">
+      <div className="w-[80%] bg-zinc-100 mt-5 mx-auto p-5">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/users/:id" element={<Users />} />
